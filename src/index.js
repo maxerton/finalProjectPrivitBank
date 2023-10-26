@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import store, { contextStore } from './store';
+import { BrowserRouter } from 'react-router-dom';
+import { globalContext } from './context';
+import { reducerBoolean } from './store/context/contextRedusers';
+
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+const StateProvider = ({ children }) => {
+  const { state, dispatch } = useReducer(reducerBoolean, contextStore);
+
+  return (
+    <globalContext.Provider value={state}>
+      {children}
+    </globalContext.Provider>
+  )
+};
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <StateProvider>
+          <App />
+        </StateProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,37 @@
+.header {
+  background-color: $background-header;
+  border-bottom: 1px solid #646464;
+  // height: 5rem;
+  padding: 5px 0;
+  color: $color-text;
+}
+
+.right_terminator {
+  border-right: 1px solid #6e6e6e;
+  padding-right: 2em;
+}
+
+
+.iconButton {
+  transition-property: box-shadow background-color;
+  transition-duration: 300ms;
+  border-radius: 50%;
+  font-size: 1.05em;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 0 10px #aaaaaa22;
+    background-color: #aaaaaa22;
+  }
+}
+
+
+.btn-login {
+  border: 1.5px solid $success;
+  color: $success;
+  font-weight: 700;
+  padding: .75em 1.75em;
+  border-radius: 2em;
+  i {
+    margin-right: 5px;
+  }
+}

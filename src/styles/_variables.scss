@@ -1,0 +1,21 @@
+$background: #0F0F0F;
+$background-header: #303030;
+$background-panel: #212121;
+$background-panel-active: #323232;
+
+$color-text: #E2E2E2;
+
+$ts-normal: 16px;
+
+$success: #8fd43b;
+
+
+:root {
+  --background: $background;
+  --background-header: $background-header;
+  --background-panel: #212121;
+  --background-panel-active: #323232;
+  --color-text: $color-text;
+  --ts-normal: $ts-normal;
+  --success: $success;
+}

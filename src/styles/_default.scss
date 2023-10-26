@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: $ts-normal;
+  background-color: $background;
+  color: $color-text;
+}
+
+// .container {
+//   // max-width: 1000px;
+//   // width: 90%;
+//   // margin: 0 auto;
+// }
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin: 0 8px;
+  }
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.jc-end {
+  justify-content: end;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}

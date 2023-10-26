@@ -1,0 +1,68 @@
+.wrapper {
+  width: 40%;
+  min-width: 150px;
+  max-width: 200px;
+  position: relative;
+}
+
+.button {
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  width: 100%;  
+}
+
+.button:hover {
+  border-bottom: 1px solid lightgray;
+}
+
+.button[data-active='true'] {
+  border-bottom: 1px solid #16a200!important;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.imgLangContain {
+
+}
+
+.imgLangContain img {
+  width: 1em;
+}
+
+.buttonContentText {
+  margin-right: auto;
+  margin-left: 1em;
+}
+
+.langList {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: var(--top-expand);
+  background-color: #4c4b48;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.langList ul {
+  padding: 0;
+}
+
+.langListItem {
+  
+}
+
+.langListButton {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.langListButton:hover {
+  background-color: #777671;
+}
