@@ -1,0 +1,95 @@
+.login-wrapper {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.exited {
+    .login-container {
+      opacity: 0;
+    }
+  }
+
+  &.exiting {
+    animation: login-modal-animate 500ms linear forwards reverse;
+    .login-container {
+      opacity: 0;
+    }
+  }
+
+  &.entering {
+    animation: login-modal-animate 500ms linear forwards;
+  }
+
+  &.entered {
+    .login-container{
+      opacity: 1;
+    }
+  }
+
+  .login-container {
+    min-width: 600px;
+    background-color: $background-panel;
+    padding: 1em;
+    border-radius: 10px;
+    transition-property: opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    @media screen and (max-width: 768px) {
+      min-width: 60vw;
+      input {
+        font-size: 1em;
+      }
+      label {
+        font-size: .7em;
+      }
+    }
+
+    .form-floating {
+      &.exited {
+          opacity: 0;
+      }
+    
+      &.exiting {
+        animation: login-modal-fade 500ms linear forwards reverse;
+        overflow: hidden;
+      }
+    
+      &.entering {
+        animation: login-modal-fade 500ms linear forwards;
+        overflow: hidden;
+      }
+    
+      &.entered {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes login-modal-animate {
+  0% {
+    backdrop-filter: blur(0);
+  }
+  100% {
+    backdrop-filter: blur(20px);
+  }
+}
+
+
+@keyframes login-modal-fade {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+  }
+}

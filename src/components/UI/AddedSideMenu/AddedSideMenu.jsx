@@ -3,7 +3,7 @@ import { Transition } from 'react-transition-group';
 import { SideMenuItem } from '../SideMenuItem/SideMenuItem';
 
 
-const AddedSideMenu = ({open, menu}) => {
+const AddedSideMenu = ({open, menu, onMouseLeaveC, onClick}) => {
   return (
     <Transition
       in={open}
@@ -13,13 +13,14 @@ const AddedSideMenu = ({open, menu}) => {
     >
       {
         trClass => (
-          <div className={`side-menu addition d-block ${trClass}`}>
+          <div className={`side-menu addition d-block ${trClass}`} onMouseLeave={onMouseLeaveC}>
             
             <ul className='w-100 p-0'>
               {
                 menu.map((el, index) => <SideMenuItem 
                 key={index} 
                 params={el}
+                onClick={() => onClick(el)}
                 ></SideMenuItem>)
               }
             </ul>

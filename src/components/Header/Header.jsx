@@ -2,10 +2,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../logo.svg';
 import { openMenu } from '../../store';
 import { Link } from 'react-router-dom';
+import { loginModalControl } from '../../store/Slices/settingSlice';
+import { logOut } from '../../store/Slices/permSettingSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
   const dollarState = useSelector(state => state.settings.dollarState);
+  const currentUser = useSelector(state => state.permSetting.currentUser);
+
+  const onLoginHandler = () => {
+    if (currentUser) {
+      dispatch(logOut());
+    } else {
+      dispatch(loginModalControl(true));
+    }
+  }
 
   return (
     <div className="header">
@@ -17,7 +28,7 @@ const Header = () => {
                 <span className="navbar-toggler-icon"></span>
               </button>
             </li>
-            <li><img src={logo} alt="" height='48' width='48' /></li>
+            <li><Link to={'/'}><img src={logo} alt="" height='48' width='48' /></Link></li>
             <li>
               <button className='iconButton'>
                 <i className="fa-solid fa-magnifying-glass"></i>
@@ -45,10 +56,22 @@ const Header = () => {
                 <i className="fa-solid fa-square-check"></i>
               </button>
             </li>
+            {
+              currentUser
+                ? (
+                  <li className='mx-2'>{currentUser.login}</li>
+                )
+                : ''
+            }
             <li>
-              <button className='btn-login'>
+              <button className='btn-login' onClick={onLoginHandler}>
                 <i className="fa-regular fa-user"></i>
-                <span>Вхід</span>
+                <span>
+                  {
+                    currentUser
+                      ? 'Вийти'
+                      : 'Вхід'
+                  }</span>
               </button>
             </li>
           </ul>
@@ -57,47 +80,6 @@ const Header = () => {
 
         </div>
       </nav>
-      {/* <div className="container d-flex jc-sb">
-          <ul className="d-flex">
-            <li><img src={logo} alt="" height='48' width='48' /></li>
-            <li>
-              <button className='iconButton'>
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-            </li>
-            <li>
-              Гаманець
-            </li>
-            <li>
-              Сервіси
-              <i className="fa-solid fa-chevron-down ml-10"></i>
-            </li>
-            <li>
-              Архів
-            </li>
-          </ul>
-        <ul className="d-flex jc-end">
-          <li className='right_terminator'>
-            36.85638 / 37.38729
-          </li>
-          <li>
-            <button className="iconButton">
-              <i className="fa-regular fa-calendar"></i>
-            </button>
-          </li>
-          <li>
-            <button className="iconButton">
-              <i className="fa-solid fa-square-check"></i>
-            </button>
-          </li>
-          <li>
-            <button className='btn-login'>
-              <i className="fa-regular fa-user"></i>
-              <span>Вхід</span>
-            </button>
-          </li>
-        </ul>
-      </div> */}
     </div>
   );
 };

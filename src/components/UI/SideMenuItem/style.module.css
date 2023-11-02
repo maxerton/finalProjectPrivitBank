@@ -8,6 +8,12 @@
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .item {
+    font-size: 1.2em;
+  }
+}
+
 .item:hover {
   background-color: var(--background-panel-active);
 }
@@ -31,9 +37,7 @@
   transform-origin: center;
 }
 
-.itemName {
-
-}
+.itemName {}
 
 .itemArrow {
   margin-left: auto;

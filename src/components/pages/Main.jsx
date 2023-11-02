@@ -12,7 +12,7 @@ const Main = () => {
     <div className="main">
       <div className="container main-container">
         <SideMenu open={sideMenuOpenObject}></SideMenu>
-        <div className="content">
+        <div className="content pt-3">
           <Outlet></Outlet>
         </div>
       </div>
