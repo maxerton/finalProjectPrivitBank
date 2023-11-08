@@ -12,3 +12,31 @@
 .content {
   flex-grow: 1;
 }
+
+
+.collapse-anim {
+  
+  &.exited {
+    max-height: 0px;
+  }
+  &.exiting {
+    overflow: hidden;
+    animation: collapseKey 500ms linear linear forwards;
+  }
+  &.entering {
+    overflow: hidden;
+    animation: collapseKey 500ms linear linear forwards reverse;
+  }
+  &.entered {
+    max-height: 50px;
+  }
+}
+
+@keyframes collapseKey {
+  0% {
+    max-height: 50px;
+  }
+  100% {
+    max-height: 0px;
+  }
+}

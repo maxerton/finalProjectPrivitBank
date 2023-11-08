@@ -4,7 +4,10 @@ const settingsSlice = createSlice({
   name: 'permSettings',
   initialState: {
     currentUser: null,
-    selectLanguage: 'ua'
+    selectLanguage: 'ua', 
+    ibans: [
+      {num: '583749201684923571', name: "Оплата комунальних послуг", type: 'communal', id: crypto.randomUUID()}
+    ]
   },
   reducers: {
     changeLanguage(state, action) {
@@ -15,6 +18,14 @@ const settingsSlice = createSlice({
     },
     logOut(state) {
       state.currentUser = null
+    },
+    addNewAgent(state, action) {
+      state.ibans.push({
+        num: action.payload.num,
+        name: action.payload.name,
+        type: action.payload.type,
+        id: crypto.randomUUID()
+      })
     }
   }
 });

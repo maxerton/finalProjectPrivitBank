@@ -3,7 +3,7 @@ import { SideMenuItem } from '../UI';
 import { closeMenu } from '../../store';
 import { Transition } from 'react-transition-group';
 import AddedSideMenu from '../UI/AddedSideMenu/AddedSideMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -34,11 +34,18 @@ const SideMenu = () => {
 
   const mobile = window.innerWidth <= 768;
 
+  useEffect(() => {
+    if (mobile && currentMenu !== menu) {
+        setCurrentMenu(menu);
+      }
+  }, []);
+  
+
   const mouseEnterHandler = (menu) => {
     if (mobile) {
       setCurrentMenu(menu);
     } else {
-      if (menu.length > 0) {
+      if (menu && menu.length > 0) {
         setSubMenu({ open: true, menu: menu });
       } else {
         setSubMenu({ open: false, menu: [] });
@@ -56,7 +63,7 @@ const SideMenu = () => {
     if (item.link) {
       navigate(item.link);
       mobile && dispatch(closeMenu());
-      mobile && setCurrentMenu(menu)
+      mobile && setCurrentMenu(menu);
     } else {
       mouseEnterHandler(item.submenu)
     }
@@ -72,7 +79,7 @@ const SideMenu = () => {
           <div className={`side-menu d-block ${trClass}`} onBlur={() => setSubMenu({ open: false, menu: [] })}>
             <div className="side-menu__header d-flex d-md-none jc-sb">
               {
-                currentMenu !== menu
+                JSON.stringify(currentMenu) !== JSON.stringify(menu) && mobile
                   ? (<button onClick={() => setCurrentMenu(menu)}>
                     <i className="fa-solid fa-chevron-left"></i>
                   </button>)

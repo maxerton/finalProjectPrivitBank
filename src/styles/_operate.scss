@@ -1,0 +1,15 @@
+.flex-overflow-container {
+  // position: inherit;
+  overflow-x: auto !important;
+  flex-wrap: nowrap;
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    max-width: 450px;
+  }
+}
+
+.flex-overflow-item {
+  @media screen and (max-width: 768px) {
+    max-width: max-content;
+  }
+}

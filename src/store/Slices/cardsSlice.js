@@ -63,9 +63,13 @@ const settingsSlice = createSlice({
     insertNewMoney(state, action) {
       const сardId = state.cards.indexOf(state.cards.filter(el => el.cardId === action.payload.cardId)[0]);
       state.cards[сardId].statement += action.payload.value;
+    },
+    deduction(state, action) {
+      const сardId = state.cards.indexOf(state.cards.filter(el => el.cardId === action.payload.cardId)[0]);
+      state.cards[сardId].statement -= action.payload.value;
     }
   }
 });
 
-export const { addCard, changeCardName, deleteCard, transfer, insertNewMoney } = settingsSlice.actions;
+export const { addCard, changeCardName, deleteCard, transfer, insertNewMoney, deduction } = settingsSlice.actions;
 export default settingsSlice.reducer

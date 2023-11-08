@@ -5,26 +5,42 @@ const historySlice = createSlice({
   initialState: {
     history: [
       /*{
-        fromCard: '6666 6666 6666 6666',
-        fromUserId: 'uuid',
+        from: {
+          type: 'user' or 'agent',
+          name: '',
+          id: ''
+        },
         date: date,
         value: 4.66,
         currency: 'UAH',
-        toUser: 'uuid',
-        toCard: '8888 8888 8888 8888'
+        comment: '',
+        to: {
+          type: 'user' or 'agent',
+          name: '',
+          id: ''
+        }
       }*/
     ]
   },
   reducers: {
     addOperation(state, action) {
       state.history.push({
-        fromCard: action.payload.fromCard,
-        fromUserId: action.payload.fromUserId,
+        from: {
+          type: action.payload.fromType,
+          name: action.payload.fromUserName,
+          id: action.payload.fromUserId,
+          num: action.payload.fromCardNum
+        },
         date: new Date(),
         value: action.payload.value,
         currency: action.payload.currency,
-        toUser: action.payload.toUser,
-        toCard: action.payload.toCard
+        comment: action.payload.comment,
+        to: {
+          type: action.payload.toType,
+          name: action.payload.toUserName,
+          id: action.payload.toUserId,
+          num: action.payload.toCardNum
+        }
       });
     }
   }
